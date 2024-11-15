@@ -43,7 +43,7 @@ import Footer from "../../../src/app/Components/Common/Footer/index";
 import axios from "axios";
 import Cart from "../../../src/app/Components/Common/Cart/index";
 import { Drawer } from "@mui/material";
-
+import YupLayout from '../../../src/app/Components/Common/YupLayout/index'
 
 
 const page = () => {
@@ -65,7 +65,7 @@ const page = () => {
     { imageSrc: Gaming, heading: "Watches" },
     { imageSrc: Headphones, heading: "PhoneAccessories" },
   ];
-
+ 
   const chunkArray = (array, size) => {
     const result = [];
     for (let i = 0; i < array.length; i += size) {
@@ -96,6 +96,10 @@ const page = () => {
 
     setCartItems(updatedCart);
     setDrawerOpen(true); // Open the drawer when an item is added
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+
+    // Log the updated cart items to the console
+    console.log("Updated Cart Items:", updatedCart);
   };
 
   const handleClose = () => {
@@ -133,8 +137,6 @@ const page = () => {
             price: Price, // Assuming the API response contains 'price' key
             name: Name, // Assuming the API response contains 'price' key
             Company: Company, // Assuming the API response contains 'price' key
-
-
           };
 
           // Categorize items into Phones, Tablets, and Watches
@@ -190,7 +192,7 @@ const page = () => {
           },
         }}
       >
-        <Cart cartItems={cartItems} setCartItems={setCartItems} handleClose={handleClose}  />
+      <Cart cartItems={cartItems} setCartItems={setCartItems} handleClose={handleClose}  />
       </Drawer>
       <Box
         sx={{
@@ -571,6 +573,9 @@ const page = () => {
             Shop Now
           </Button>
         </Box>
+      </Box>
+      <Box>
+        <YupLayout />
       </Box>
       <Box>
         <Footer />

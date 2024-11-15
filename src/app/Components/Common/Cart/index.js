@@ -13,39 +13,40 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete"; // Import DeleteIcon
 import Increment from "../../../../../src/app/Components/Common/Increment/index";
 import Link from "next/link";
-import CheckoutForm from "../../../../../src/app/Components/CheckoutForm/index";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 
-const Cart = ({ cartItems, handleClose, setCartItems }) => { // Add setCartItems prop
+const Cart = ({ cartItems, handleClose, setCartItems }) => {
+  // Add setCartItems prop
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const handleCheckout = async () => {
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/create-checkout-session`,
-        {
-          items: cartItems,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const { url } = response.data; // Get the URL from the response
+  // const handleCheckout = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       `${process.env.NEXT_PUBLIC_API_URL}/create-checkout-session`,
+  //       {
+  //         items: cartItems,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     const { url } = response.data; // Get the URL from the response
 
-      // Redirect the user to the checkout URL
-      window.location.href = url; // Redirect to the Stripe checkout page
-    } catch (error) {
-      console.error(
-        "Error in handleCheckout:",
-        error.response ? error.response.data : error.message
-      );
-    }
-  };
+  //     // Redirect the user to the checkout URL
+  //     window.location.href = url; // Redirect to the Stripe checkout page
+  //   } catch (error) {
+  //     console.error(
+  //       "Error in handleCheckout:",
+  //       error.response ? error.response.data : error.message
+  //     );
+  //   }
+  // };
 
   // Function to calculate total price
+
   const calculateTotalPrice = () => {
     let total = 0;
     cartItems.forEach((item) => {
@@ -65,13 +66,16 @@ const Cart = ({ cartItems, handleClose, setCartItems }) => { // Add setCartItems
     updatedCartItems[index].quantity = newQuantity;
     setCartItems(updatedCartItems); // Update the cart items
     calculateTotalPrice(); // Recalculate total price
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+ 
   };
 
   // Handle item deletion
   const handleDelete = (index) => {
     const updatedCartItems = cartItems.filter((_, i) => i !== index);
     setCartItems(updatedCartItems); // Update cart items state
-  };
+    };
 
   return (
     <Box sx={{ position: "relative", padding: "15px" }}>
@@ -138,7 +142,10 @@ const Cart = ({ cartItems, handleClose, setCartItems }) => { // Add setCartItems
                     </>
                   }
                 />
-                <Button onClick={() => handleDelete(index)} sx={{ minWidth: "40px" }}>
+                <Button
+                  onClick={() => handleDelete(index)}
+                  sx={{ minWidth: "40px" }}
+                >
                   <DeleteIcon />
                 </Button>
               </ListItem>
@@ -216,6 +223,7 @@ const Cart = ({ cartItems, handleClose, setCartItems }) => { // Add setCartItems
               ${totalPrice.toFixed(2)}
             </Typography>
           </Box>
+
           <Box>
             <Typography sx={{ color: "black" }}>
               Tax included and shipping calculated at checkout
@@ -224,24 +232,26 @@ const Cart = ({ cartItems, handleClose, setCartItems }) => { // Add setCartItems
           <Box
             sx={{ display: "flex", flexDirection: "column", marginTop: "10px" }}
           >
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={handleCheckout}
-              sx={{
-                width: "100%",
-                marginBottom: "10px",
-                backgroundColor: "black",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "black",
-                  border: "1px solid black",
-                },
-              }}
-            >
-              Checkout
-            </Button>
+            <Link href="/StripeLayout" passHref>
+              <Button
+                variant="outlined"
+                color="primary"
+                // onClick={handleCheckout}
+                sx={{
+                  width: "100%",
+                  marginBottom: "10px",
+                  backgroundColor: "black",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "black",
+                    border: "1px solid black",
+                  },
+                }}
+              >
+                Checkout
+              </Button>
+            </Link>
             <Button
               variant="outlined"
               color="primary"

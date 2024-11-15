@@ -30,14 +30,26 @@ const index = ({ setDrawerOpen }) => {
       >
         {/* Logo */}
         <Typography
-          variant="h6"
+          variant="h4" // Slightly larger font size for a logo feel
           sx={{
+            background:
+              "linear-gradient(45deg, hsl(0, 80%, 50%), hsl(45, 100%, 50%))", // Red to yellow gradient
             fontWeight: "bold",
-            fontSize: "1.5rem",
-            color: "#000",
+            textTransform: "uppercase",
+            letterSpacing: "3px",
+            color: "transparent",
+            WebkitBackgroundClip: "text", // Applies gradient to the text only
+            backgroundClip: "text",
+            textShadow: "4px 4px 10px rgba(0, 0, 0, 0.3)", // Larger shadow for a glowing effect
+            fontFamily: "'Poppins', sans-serif", // Example custom font
+            "&:hover": {
+              textShadow: "6px 6px 15px rgba(255, 165, 0, 0.7)", // Brighter glow on hover
+              transform: "scale(1.05)", // Slightly enlarges on hover
+              transition: "all 0.3s ease-in-out",
+            },
           }}
         >
-          cyber
+          BlendMobile
         </Typography>
 
         {/* Search Bar */}

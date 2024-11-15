@@ -23,7 +23,7 @@ const index = () => {
         {/* First Section: Heading, Paragraph, and Social Media */}
         <Box sx={{ flex: '1 1 300px', mb: 4 }}>
           <Typography variant="h6" sx={{ mb: 2 }}>
-            CYBER
+            Blendofy
           </Typography>
           <Typography variant="body1" sx={{ mb: 3 ,width:"80%"}}>
           We are a residential interior design firm located in Portland. Our boutique-studio offers more than          </Typography>

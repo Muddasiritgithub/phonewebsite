@@ -116,3 +116,26 @@ a {
 p.MuiTypography-root.MuiTypography-body2.css-1apkyku-MuiTypography-root {
   min-height: 40px;
 }
+.css-jineix-MuiButtonBase-root-MuiAccordionSummary-root{
+  padding: 0px;
+}
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiAccordion-root.MuiAccordion-rounded.MuiAccordion-gutters.css-b7obdg-MuiPaper-root-MuiAccordion-root{
+  margin: 15px;
+}
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiAccordion-root.MuiAccordion-rounded.MuiAccordion-gutters.css-64cne9-MuiPaper-root-MuiAccordion-root{
+  margin: 15px;
+}
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6.css-13b8syj-MuiGrid-root{
+  max-width: 600px;
+}
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6.css-13b8syj-MuiGrid-root{
+  padding: 20px 60px;
+  right:0px;
+}
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6.css-qphbg3-MuiGrid-root{
+  padding-top: 0px;
+}
+ 
+.MuiContainer-root.css-8oc5si-MuiContainer-root {
+padding: 0px;
+}
