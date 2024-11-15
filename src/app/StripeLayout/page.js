@@ -643,7 +643,7 @@ const page = () => {
                 </Box>
               </Elements>
             ) : (
-              <div>Loading payment details...</div> // Display loading message or fallback UI
+              <div>Plz wait... Loading payment details...</div> // Display loading message or fallback UI
             )}
           </Box>
         </Grid>
